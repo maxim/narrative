@@ -620,7 +620,7 @@ file 'ARCHITECTURE.md', <<~MARKDOWN
   * [Urls](app/models/urls.rb) - all URL helpers for use in pages and forms
   * [Cron objects](app/cron) - periodic jobs
   * [Client objects](app/clients) — app-specific adapters for API clients and SDKs
-  * [ADRs](doc/adrs) - architectural decision records
+  * [ADRs](doc/adr) - architectural decision records
   * [Transactionality helper](app/controllers/concerns/transactionality.rb) - use transactions in controllers to create procedural narratives
   * [App config](config/#{app_name.underscore}.yml) - this is where the application-specific non-secret config goes
 MARKDOWN
