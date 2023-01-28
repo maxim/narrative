@@ -1,0 +1,8 @@
+Description:
+    Generate an Architectural Decision Record with a placeholder template.
+
+Example:
+    bin/rails generate adr activejob_adapter
+
+    This will create:
+        doc/adrs/2022-12-activejob-adapter.md

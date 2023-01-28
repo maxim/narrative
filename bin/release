@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+git tag -a "$1" && git push --tags

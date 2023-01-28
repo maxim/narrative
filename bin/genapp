@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+rm -rf example_app
+rails new example_app -BG -a propshaft -c tailwind -m narrative.rb

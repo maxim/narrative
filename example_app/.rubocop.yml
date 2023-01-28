@@ -1,0 +1,102 @@
+require:
+  - standard
+  - rubocop-rails
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-thread_safety
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  Exclude:
+    - public/**/*
+    - vendor/**/*
+    - bin/bundle
+    - db/schema.rb
+
+Bundler:
+  Enabled: true
+
+Rails:
+  Enabled: true
+
+Layout/LineLength:
+  Max: 80
+
+# Support aligning things like:
+#
+# first_key  = value
+# second_key = value
+# third_key  = value
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+# We want to support aligning hashes in both key and table styles, but rubocop
+# forces us to choose one, therefore this is disabled.
+Layout/HashAlignment:
+  Enabled: false
+
+# Support one-liner defs to be on adjacent lines:
+#
+#   def hello = "hello"
+#   def world = "world"
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
+# These files often have extra empty lines out of the box. No harm in allowing
+# it in such a comment-heavy place.
+Layout/EmptyLines:
+  Exclude:
+    - config/environments/*
+
+# Leave this up to readability assessment.
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+# Leave this up to readability assessment.
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+# Leave this up to readability assessment.
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false
+
+# Forces parentheses on `foo **kwargs`. Sometimes these parentheses make
+# readability worse.
+Lint/AmbiguousOperator:
+  Enabled: false
+
+# We use regexp as first arg in assert_match, there doesn't seem to be any
+# ambiguity with it.
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# Multiple assertions per test are okay in some situations.
+Minitest/MultipleAssertions:
+  Enabled: false
+
+# For small tests keeping 2 lines together looks prettier.
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+
+# We don't want to restrict this choice. Regular `alias` is better for static
+# alias and auto-documentation (most cases). And `alias_method` can be used for
+# runtime metaprogramming.
+Style/Alias:
+  Enabled: false
+
+# Depending on a situation, both foo.() and foo.call are legit.
+Style/LambdaCall:
+  Enabled: false
+
+# More trouble than it's worth. Inconsistency for string literals is okay.
+Style/StringLiterals:
+  Enabled: false
+
+# Class-instance variables are okay for inheritability.
+ThreadSafety/InstanceVariableInClassMethod:
+  Enabled: false
