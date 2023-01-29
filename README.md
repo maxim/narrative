@@ -6,6 +6,16 @@
 
 This template consists of a few patterns overlayed on top of Rails. Explore the [example_app](example_app) to see what they are. A good starting point is the generated [ARCHITECTURE.md](example_app/ARCHITECTURE.md).
 
+## Usage
+
+Start a new rails app with the latest release.
+
+```shell
+rails new my_app -m https://github.com/maxim/narrative/releases/latest/download/narrative.rb
+```
+
+Check [releases](https://github.com/maxim/narrative/releases) if you'd like to pick an older one.
+
 ## Philosophy
 
 Narrative-centric approach promotes the idea that your codebase should be telling short stories in your app's entry routines. All the major business actions should be visible at this level. The opposite of a narrative-centric would be model-centric, where your entry points contain a single call into a core model, and the rest of the story is hidden in callbacks. See [Rails — narrative vs model centric approach](https://max.engineer/rails-narratives-vs-models) for some unpacking.
