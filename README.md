@@ -4,7 +4,7 @@
 
 ## Overview
 
-This template consists of a few patterns overlayed on top of Rails. Explore the [example_app](example_app) to see what they are. A good starting point is the generated [ARCHITECTURE.md](example_app/ARCHITECTURE.md).
+This template consists of a few patterns overlayed on top of Rails. Explore the [ARCHITECTURE.md](example_app/ARCHITECTURE.md) of the [example_app](example_app) to see what they are.
 
 ## Usage
 
