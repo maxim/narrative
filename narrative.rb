@@ -296,6 +296,10 @@ file 'app/forms/application_form.rb', <<~RUBY
         @default_method = method
       end
 
+      def model_name
+        @_model_name ||= ActiveModel::Name.new(self, nil, name.demodulize)
+      end
+
       def attribute_names     = portrayal.keywords.without(:action, :method)
       def from_params(params) = new(**filter_params(params))
 
