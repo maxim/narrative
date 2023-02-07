@@ -8,6 +8,7 @@ Form objects have the following uses:
 4. They validate params.
 5. They help you save params. (But they DO NOT do the actual saving)
 6. They make your forms JSON-compatible.
+7. They help you check which form is submitted
 
 Here's an example of how to write a form object:
 
@@ -66,3 +67,16 @@ user.update!(@page.form.attributes)
 ### 6. Working with JSON
 
 Forms have `as_json` and `to_json`. The produced JSON contains everything that the front-end requires to be able to render the form. This includes validation errors if any.
+
+### 7. Checking which form is submitted
+
+Sometimes one action handles multiple forms. Thanks to `===`, you can check like this:
+
+```ruby
+case params
+when MyForm
+  # do something
+when MyOtherForm
+  # do something else
+end
+```

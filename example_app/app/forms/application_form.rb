@@ -11,12 +11,15 @@ class ApplicationForm < ApplicationStruct
       @_model_name ||= ActiveModel::Name.new(self, nil, name.demodulize)
     end
 
+    def ===(other) = other.respond_to?(:key?) ? other.key?(param_key) : super
+
+    def param_key           = model_name.param_key
     def attribute_names     = portrayal.keywords.without(:action, :method)
     def from_params(params) = new(**filter_params(params))
 
     def filter_params(params)
       params
-        .require(model_name.param_key)
+        .require(param_key)
         .permit(*attribute_names)
         .to_hash
         .transform_keys(&:to_sym)
