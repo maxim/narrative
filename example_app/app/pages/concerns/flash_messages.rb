@@ -14,7 +14,7 @@
 #       keyword :name
 #     end
 module FlashMessages
-  def from_flash(flash) = new(**flash_args(flash))
+  def from_flash(flash, **kw) = new(**flash_args(flash), **kw)
   def flash_args(flash) = {notice: flash[:notice], alert: flash[:alert]}
 
   def self.extended(base)

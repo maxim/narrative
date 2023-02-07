@@ -13,9 +13,9 @@ class ApplicationForm < ApplicationStruct
 
     def ===(other) = other.respond_to?(:key?) ? other.key?(param_key) : super
 
-    def param_key           = model_name.param_key
-    def attribute_names     = portrayal.keywords.without(:action, :method)
-    def from_params(params) = new(**filter_params(params))
+    def param_key                 = model_name.param_key
+    def attribute_names           = portrayal.keywords.without(:action, :method)
+    def from_params(params, **kw) = new(**filter_params(params), **kw)
 
     def filter_params(params)
       params

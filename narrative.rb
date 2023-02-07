@@ -203,7 +203,7 @@ file 'app/pages/concerns/flash_messages.rb', <<~RUBY
   #       keyword :name
   #     end
   module FlashMessages
-    def from_flash(flash) = new(**flash_args(flash))
+    def from_flash(flash, **kw) = new(**flash_args(flash), **kw)
     def flash_args(flash) = {notice: flash[:notice], alert: flash[:alert]}
 
     def self.extended(base)
@@ -316,9 +316,9 @@ file 'app/forms/application_form.rb', <<~RUBY
 
       def ===(other) = other.respond_to?(:key?) ? other.key?(param_key) : super
 
-      def param_key           = model_name.param_key
-      def attribute_names     = portrayal.keywords.without(:action, :method)
-      def from_params(params) = new(**filter_params(params))
+      def param_key                 = model_name.param_key
+      def attribute_names           = portrayal.keywords.without(:action, :method)
+      def from_params(params, **kw) = new(**filter_params(params), **kw)
 
       def filter_params(params)
         params

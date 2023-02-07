@@ -36,6 +36,8 @@
     end
     ```
 
+* Allow passing additional keywords in `ApplicationForm.from_params` and `FlashMessages.from_flash`
+
 ## 0.1.0
 
 * Initial release
