@@ -31,8 +31,9 @@ class ApplicationForm < ApplicationStruct
   def plural_error = "error".pluralize(errors.size)
   def with         = {model: self, url: action, method: method}
 
-  def as_json(**kwargs)
-    methods = Array(kwargs[:methods]) | %i[action method plural_error errors]
-    super(**kwargs, methods: methods)
+  def as_json(*args)
+    options = args.extract_options!
+    methods = Array(options[:methods]) | %i[action method plural_error errors]
+    super(**options, methods: methods)
   end
 end
