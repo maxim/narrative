@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 0.2.0
+
 * Rename ApplicationForm's `@action` and `@method` to `@default_action`, `@default_method` for consistency
 * Exclude namespaces in form's `model_name`, because when you want to alter a form's action you can do it this way:
 
