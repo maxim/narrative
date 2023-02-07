@@ -1,13 +1,13 @@
 class ApplicationForm < ApplicationStruct
   class << self
+    attr_reader :default_action, :default_method
+
     def action(url, method: nil)
-      @action = url
-      @method = method
+      @default_action = url
+      @default_method = method
     end
 
     def attribute_names     = portrayal.keywords.without(:action, :method)
-    def default_action      = @action
-    def default_method      = @method
     def from_params(params) = new(**filter_params(params))
 
     def filter_params(params)
