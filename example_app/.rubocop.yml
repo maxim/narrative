@@ -24,21 +24,19 @@ Bundler:
 Rails:
   Enabled: true
 
-Layout/LineLength:
-  Max: 80
-
-# Support aligning things like:
+# Bad:
 #
-# first_key  = value
-# second_key = value
-# third_key  = value
-Layout/ExtraSpacing:
-  AllowForAlignment: true
-
-# We want to support aligning hashes in both key and table styles, but rubocop
-# forces us to choose one, therefore this is disabled.
-Layout/HashAlignment:
-  Enabled: false
+# foo :bar,
+#     :baz,
+#     key: value
+#
+# Good:
+#
+# foo :bar,
+#   :baz,
+#   key: value
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
 
 # Support one-liner defs to be on adjacent lines:
 #
@@ -52,6 +50,44 @@ Layout/EmptyLineBetweenDefs:
 Layout/EmptyLines:
   Exclude:
     - config/environments/*
+
+# Support aligning things like:
+#
+# first_key  = value
+# second_key = value
+# third_key  = value
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+# Stop complaining about positional arg staying on the first line:
+#
+#   foo "foo",
+#     bar: "bar"
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent_relative_to_receiver
+
+# Prefer this style in methods and literals:
+# array = [
+#   :value
+# ]
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+# We want to support aligning hashes in both key and table styles, but rubocop
+# forces us to choose one, therefore this is disabled.
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 80
+
+# Prefer indented vertical method chains for clarity:
+#
+# Foo
+#   .bar
+#   .baz
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
 
 # Leave this up to readability assessment.
 Layout/SpaceInsideArrayLiteralBrackets:
@@ -81,6 +117,10 @@ Minitest/MultipleAssertions:
 
 # For small tests keeping 2 lines together looks prettier.
 Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+
+# Methods that skip validations are useful when you know how to use them.
+Rails/SkipsModelValidations:
   Enabled: false
 
 # We don't want to restrict this choice. Regular `alias` is better for static

@@ -1,5 +1,12 @@
 ## Unreleased
 
+* Relax and tweak rubocop:
+  * Prefer fixed indentation for multi-line arguments
+  * Allow positional args on first line, keywords on next lines
+  * Prefer consistent indent in array literals
+  * Prefer indenting method chains relative to receiver
+  * Allow skipping model validations
+
 ## 0.2.0
 
 * Rename ApplicationForm's `@action` and `@method` to `@default_action`, `@default_method` for consistency
