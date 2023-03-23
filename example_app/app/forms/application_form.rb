@@ -17,10 +17,14 @@ class ApplicationForm < ApplicationStruct
     def attribute_names           = portrayal.keywords.without(:action, :method)
     def from_params(params, **kw) = new(**filter_params(params), **kw)
 
+    def public_attribute_names
+      attribute_names.select { |n| public_method_defined?(n) }
+    end
+
     def filter_params(params)
       params
         .require(param_key)
-        .permit(*attribute_names)
+        .permit(*public_attribute_names)
         .to_hash
         .transform_keys(&:to_sym)
     end
