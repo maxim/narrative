@@ -1,5 +1,7 @@
 ## Unreleased
 
+# 0.3.0
+
 * Permit only public keywords in `ApplicationForm.filter_params`
 * Relax and tweak rubocop:
   * Prefer fixed indentation for multi-line arguments
